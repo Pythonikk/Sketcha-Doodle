@@ -1,1 +1,1 @@
-# Etch_A_Sketch
+# Sketch-A-Doodle
