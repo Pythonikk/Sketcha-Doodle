@@ -1,0 +1,105 @@
+body {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		font-family: 'Inconsolata', monospace;
+	}
+
+	.header {
+		height: 70px;
+		border: 1px solid lightgrey;
+    	text-align: center;
+    	width: 100%;
+	    position: fixed;
+	    z-index: 1;
+	    background-color: white;
+	}
+
+	.left-top {
+		display: inline-block;
+	    float: left;
+	    position: relative;
+	    bottom: 10px;
+	    left: 50px;
+	}
+
+	.left-bottom {
+		display: inline;
+		float: left;
+		position: relative;
+		top: 40px;
+		right: 260px;
+		z-index: 10; 
+	}
+
+	.middle {
+		display: inline-block;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    margin: auto;
+	}
+
+	.middle-bottom {
+	  display: inline-block;
+	  padding: 6px;
+	}
+
+	img {
+		height: 30px;
+    	padding-top: 5px;
+	}
+
+
+	.right {
+		display: inline-block;
+	    position: relative;
+	    top: 40px;
+	}
+
+	.right h5 {
+
+	}
+
+	p {
+		display: inline-block;
+		width: 175px;
+		z-index: 2;
+		background-color: rgba(93, 173, 236, 0.3); 
+		padding: 3px;
+		margin: 0 4px;
+	}
+
+  	button {
+    	margin: 1px;
+        background-color: rgba(255, 247, 0, 0.5);
+        font-family: 'Inconsolata', monospace;
+      	font-size: 16px;
+      	font-weight: bold;
+  	}
+
+	.container {
+		cursor: crosshair;
+		width: 100%;
+    	display: flex;
+    	flex-wrap: wrap;
+    	align-content: center;
+	    position: absolute;
+		top:0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+	.newDiv {
+		border-bottom: 1px solid lightgrey;
+		border-right: 1px solid lightgrey;
+		flex-grow: 1;
+	}
+
+	.active {
+		background-color: black;
+	}

@@ -1,151 +1,53 @@
 <!DOCTYPE html>
+
+<!-- JAVASCRIPT AND CSS SHOULD GO IN THEIR OWN FILES WHEN YOUR FINISHED -->
+
 <html>
 
 <head>
 	<meta charset="utf-8">
 	<title>Sketcha Doodle</title>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/style.css"> 
 </head>
 
 <body>
-
 <div class ="header">
-	<button type="button" name="clear">Clear</button>
-	<!-- button to change grid size -->
-	<div class="color-selection">
-		<button type="button" name="random">Random</button>
-		<button type="button" name="black">Black</button>
+
+	<div class="left">
+		<div class="left-top">
+			<h5>Click anywhere on grid to toggle marker active/inactive</h5>
+		</div>
+		<div class="left-bottom">
+			<button type="button" name="black">Black</button>
+			<button type="button" name="random">Random Colors</button>
+			<button type="button" name="clear">Clear</button>
+		</div>
+	</div>
+
+	<div class="middle">
+		<div class="middle-top">
+			<img src='./images/title-bw.png'>
+		</div>
+		<div class="middle-bottom">
+			<p class="p-a">Marker: Inactive</p>
+			<p class="p-b">Grid Size: 75 x 75</p>
+		</div>
+	</div>
+
+	<div class="right">
+		<div class="right-bottom">
+			<button type="button" name="gridSize">Grid Size</button>
+		</div>
 	</div>
 </div>
 
 <div class="container">
+	
 </div>
 
-</body>
-<script>
-
-	const container = document.querySelector('.container');
-
-	createGrid();
-
-	function createGrid(numOfSquares = 75) {
-		let divHeight = 16;
-		let divWidth = 16;
-		let containerWidth = 1280;
-		let totalSquares = ((numOfSquares * numOfSquares) / 2.5) + numOfSquares + 1;
-
-		// Temporary. Need to create grid from user parameters.
-		if (numOfSquares !== 75) {
-			// Temporary while working on default grid
-			console.alert('This is not the default grid');
-			// Create default grid
-		} else {
-
-			for (i = 1; i < totalSquares; i++ ) {
-				const div = document.createElement('div');
-				div.setAttribute('class', 'newDiv');
-				div.style.width = divHeight + 'px';
-				div.style.height = divWidth + 'px';
-				container.appendChild(div);
-			}
-		}
-	}
-
-	// click to toggle pen-up/pen-down
-	const togglePen = function(event) {
-        event.target.classList.add('active');
-    }
-	container.addEventListener('click', event => {
-		document.querySelectorAll('.newDiv').forEach(div => {
-			if (div.className.includes('penDown')) {
-				div.classList.remove('penDown');
-				div.removeEventListener('mouseover', togglePen, true);
-			} else {
-				div.classList.add('penDown');
-				div.addEventListener('mouseover', togglePen, true);
-			}
-		})
-	})
-
-	// The clear button clears markup on the grid.
-	const clearBtn = document.querySelector('button[name=clear]');
-	clearBtn.addEventListener('click', event => {
-		document.querySelectorAll('.newDiv').forEach(div => {
-			div.classList.remove('active');
-			div.classList.remove('random');
-			div.style.backgroundColor = 'white';
-		})
-	})
-
-	const colors = ['#FF3855','#FB4D46','#FFAA1D','#FFF700','#299617','#A7F432','#2243B6','#5DADEC','#5946B2','#9C51B6','#FFDB00','#FF7A00','#FDFF00','#87FF2A','#0048BA','#FF007C','#E936A7']
-
-	const addRandom = function(event) {
-		let color;
-		event.target.classList.add('random');
-		if (event.target.className.includes('penDown')) {
-			color = colors[Math.floor(Math.random() * colors.length)];
-			event.target.style.backgroundColor = color;
-		}
-	}
-	
-	const random = document.querySelector('button[name=random]');
-	random.addEventListener('click', event => {
-		document.querySelectorAll('.newDiv').forEach(div => {
-			div.addEventListener('mouseover', addRandom);
-		})
-	})
-
-	const black = document.querySelector('button[name=black]');
-	black.addEventListener('click', event => {
-		document.querySelectorAll('.newDiv').forEach(div => {
-			div.removeEventListener('mouseover', addRandom);
-			div.addEventListener('mouseover', event => {
-				if (div.className.includes('penDown')) {
-					div.style.backgroundColor = 'black';
-				}
-			})
-		})
-	})
-
-
-</script>
-
-<style type='text/css'>
-	body {
-		overflow: hidden;
-		cursor: crosshair;
-	}
-
-	.header {
-		height: 70px;
-		border: 1px solid red;
-	}
-	.container {
-		width: 100%;
-		padding: 4px;
-	}
-
-	.newDiv {
-		border-bottom: 1px solid lightgrey;
-		border-right: 1px solid lightgrey;
-		float: left;
-	}
-
-	.active {
-		background-color: black;
-	}
-
-
-	.invert.active {
-		background-color: white;
-	}
-
-
-	
-
-
-</style>
+<script src="./js/main.js"></script>
 
 </body>
 
 </html> 
-
